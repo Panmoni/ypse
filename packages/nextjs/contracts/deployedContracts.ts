@@ -4,6 +4,3773 @@
  */
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
-const deployedContracts = {} as const;
+const deployedContracts = {
+  31337: {
+    Account: {
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_registryAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+          ],
+          name: "DisputeInitiated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+          ],
+          name: "DisputeLost",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "endorser",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "endorsed",
+              type: "address",
+            },
+          ],
+          name: "EndorsementGiven",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "endorser",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "endorsed",
+              type: "address",
+            },
+          ],
+          name: "EndorsementReceived",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "newReputationScore",
+              type: "uint256",
+            },
+          ],
+          name: "ReputationUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+          ],
+          name: "TradeStatsUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "userId",
+              type: "uint256",
+            },
+          ],
+          name: "UserProfileUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "userId",
+              type: "uint256",
+            },
+          ],
+          name: "UserRegistered",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "userId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "newRole",
+              type: "string",
+            },
+          ],
+          name: "UserRoleUpdated",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getUserInfo",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "userId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "userEmail",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "userChatHandle",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "userWebsite",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "string",
+                  name: "userAvatar",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "userRole",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Account.UserBasicInfo",
+              name: "basicInfo",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "userReputationScore",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userEndorsementsGiven",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userEndorsementsReceived",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userRatingsGiven",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userRatingsReceived",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userDisputesInitiated",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userDisputesLost",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userTotalTradesInitiated",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userTotalTradesAccepted",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userTotalTradesCompleted",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userTotalTradeVolume",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userAverageTradeVolume",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "userLastCompletedTradeDate",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct Account.UserStats",
+              name: "stats",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getUserReputationScore",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "registry",
+          outputs: [
+            {
+              internalType: "contract ContractRegistry",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "updateDisputesInitiated",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "updateDisputesLost",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_endorser",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_endorsed",
+              type: "address",
+            },
+          ],
+          name: "updateEndorsementsGiven",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_endorser",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_endorsed",
+              type: "address",
+            },
+          ],
+          name: "updateEndorsementsReceived",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_tradeVolume",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "_initiated",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "_accepted",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "_completed",
+              type: "bool",
+            },
+          ],
+          name: "updateTradeStats",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "userBasicInfo",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "userId",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes32",
+              name: "userEmail",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes32",
+              name: "userChatHandle",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes32",
+              name: "userWebsite",
+              type: "bytes32",
+            },
+            {
+              internalType: "string",
+              name: "userAvatar",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "userRole",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "userCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "userIdToAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "_userEmail",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes32",
+              name: "_userChatHandle",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes32",
+              name: "_userWebsite",
+              type: "bytes32",
+            },
+            {
+              internalType: "string",
+              name: "_userAvatar",
+              type: "string",
+            },
+          ],
+          name: "userReg",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "userReputationCalc",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "userStats",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "userReputationScore",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userEndorsementsGiven",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userEndorsementsReceived",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userRatingsGiven",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userRatingsReceived",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userDisputesInitiated",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userDisputesLost",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userTotalTradesInitiated",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userTotalTradesAccepted",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userTotalTradesCompleted",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userTotalTradeVolume",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userAverageTradeVolume",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "userLastCompletedTradeDate",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "_userEmail",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes32",
+              name: "_userChatHandle",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes32",
+              name: "_userWebsite",
+              type: "bytes32",
+            },
+            {
+              internalType: "string",
+              name: "_userAvatar",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_userRole",
+              type: "string",
+            },
+          ],
+          name: "userUpdateProfile",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Arbitration: {
+      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_admin",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_registryAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "DisputeCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "submitter",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "evidence",
+              type: "string",
+            },
+          ],
+          name: "DisputeEvidenceSubmitted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "DisputeResolutionCanceled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "resolutionTimestamp",
+              type: "uint256",
+            },
+          ],
+          name: "DisputeResolutionInitiated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "DisputeResolutionTimelockExpired",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "resolvedInFavorOfMaker",
+              type: "bool",
+            },
+          ],
+          name: "DisputeResolved",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "newTimelock",
+              type: "uint256",
+            },
+          ],
+          name: "ResolutionTimelockUpdated",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "admin",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "cancelDisputeResolution",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "disputeCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "disputeEvidence",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "disputes",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "enum Arbitration.DisputeStatus",
+              name: "status",
+              type: "uint8",
+            },
+            {
+              internalType: "uint256",
+              name: "disputeTimestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "resolveTimestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "resolvedInFavorOfMaker",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "getDisputeDetails",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "enum Arbitration.DisputeStatus",
+              name: "status",
+              type: "uint8",
+            },
+            {
+              internalType: "uint256",
+              name: "disputeTimestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "resolveTimestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "resolvedInFavorOfMaker",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "getDisputeOutcome",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "handleDispute",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_disputeId",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "_resolveInFavorOfMaker",
+              type: "bool",
+            },
+          ],
+          name: "initiateDisputeResolution",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "isDisputeResolved",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "registry",
+          outputs: [
+            {
+              internalType: "contract ContractRegistry",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "resolutionTimelock",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_disputeId",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "_resolveInFavorOfMaker",
+              type: "bool",
+            },
+          ],
+          name: "resolveDispute",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "resolveDisputeAfterTimelock",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_evidence",
+              type: "string",
+            },
+          ],
+          name: "submitEvidence",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "tradeDisputeIds",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_newTimelock",
+              type: "uint256",
+            },
+          ],
+          name: "updateResolutionTimelock",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    ContractRegistry: {
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_accountAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_offerAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_tradeAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_escrowAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_ratingAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_reputationAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_arbitrationAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "string",
+              name: "contractName",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "newAddress",
+              type: "address",
+            },
+          ],
+          name: "ContractAddressUpdated",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "accountAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "arbitrationAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "escrowAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "offerAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "ratingAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "reputationAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "tradeAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_accountAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_offerAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_tradeAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_escrowAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_ratingAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_reputationAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_arbitrationAddress",
+              type: "address",
+            },
+          ],
+          name: "updateAddresses",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_offerAddress",
+              type: "address",
+            },
+          ],
+          name: "updateOfferAddress",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Escrow: {
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_admin",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_registryAddress",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_platformFeePercentage",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_penaltyPercentage",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "InvalidInitialization",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NotInitializing",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ReentrancyGuardReentrantCall",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "CryptoLocked",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "penaltyAmount",
+              type: "uint256",
+            },
+          ],
+          name: "CryptoPenalized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "CryptoRefunded",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "CryptoReleased",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "splitAmount",
+              type: "uint256",
+            },
+          ],
+          name: "CryptoSplit",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "sourceTradeId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "destTradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "EscrowTransferred",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "platformFeePercentage",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "penaltyPercentage",
+              type: "uint256",
+            },
+          ],
+          name: "FeePercentagesUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "version",
+              type: "uint64",
+            },
+          ],
+          name: "Initialized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "feeAmount",
+              type: "uint256",
+            },
+          ],
+          name: "PlatformFeePaid",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "admin",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "escrows",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "isLocked",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "isReleased",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "isRefunded",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "lockCrypto",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "payPlatformFee",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "penalizeCrypto",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "penaltyPercentage",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "platformFeePercentage",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "refundCrypto",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "registry",
+          outputs: [
+            {
+              internalType: "contract ContractRegistry",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "address payable",
+              name: "_receiver",
+              type: "address",
+            },
+          ],
+          name: "releaseCrypto",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_splitAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "address payable",
+              name: "_receiver",
+              type: "address",
+            },
+          ],
+          name: "splitCrypto",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_sourceTradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_destTradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "transferEscrow",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_platformFeePercentage",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_penaltyPercentage",
+              type: "uint256",
+            },
+          ],
+          name: "updateFeePercentages",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "withdrawPlatformFees",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Offer: {
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_registryAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [],
+          name: "ContractPaused",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [],
+          name: "ContractUnpaused",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+          ],
+          name: "OfferActivated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "offerOwner",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "minTradeAmount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "maxTradeAmount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "fiatCurrency",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "enum Offer.OfferStatus",
+              name: "status",
+              type: "uint8",
+            },
+          ],
+          name: "OfferCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "OfferDisputeInvolved",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "OfferDisputeLost",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "minAmount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "maxAmount",
+              type: "uint256",
+            },
+          ],
+          name: "OfferMinMaxTradeAmountsChanged",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+          ],
+          name: "OfferPaused",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+          ],
+          name: "OfferStatsUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+          ],
+          name: "OfferTradeAccepted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "tradeVolume",
+              type: "uint256",
+            },
+          ],
+          name: "OfferTradeCompleted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "minTradeAmount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "maxTradeAmount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "enum Offer.OfferStatus",
+              name: "status",
+              type: "uint8",
+            },
+          ],
+          name: "OfferUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+          ],
+          name: "OfferWithdrawn",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "getOfferCounts",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_offerId",
+              type: "uint256",
+            },
+          ],
+          name: "getOfferDetails",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "int256",
+              name: "",
+              type: "int256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getUserOffers",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "offerCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_minTradeAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_maxTradeAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_fiatCurrency",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "_buyingCrypto",
+              type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "_country",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_paymentMethod",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_terms",
+              type: "string",
+            },
+            {
+              internalType: "int256",
+              name: "_rate",
+              type: "int256",
+            },
+            {
+              internalType: "string",
+              name: "_title",
+              type: "string",
+            },
+          ],
+          name: "offerCreate",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "offerDisputeCounted",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "offerParametersUsed",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_offerId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_minTradeAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_maxTradeAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "enum Offer.OfferStatus",
+              name: "_status",
+              type: "uint8",
+            },
+            {
+              internalType: "bool",
+              name: "_buyingCrypto",
+              type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "_country",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_paymentMethod",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_terms",
+              type: "string",
+            },
+            {
+              internalType: "int256",
+              name: "_rate",
+              type: "int256",
+            },
+            {
+              internalType: "string",
+              name: "_title",
+              type: "string",
+            },
+          ],
+          name: "offerUpdateOffer",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "offers",
+          outputs: [
+            {
+              internalType: "address",
+              name: "offerOwner",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "offerTotalTradesAccepted",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerTotalTradesCompleted",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerDisputesInvolved",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerDisputesLost",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerAverageTradeVolume",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerMinTradeAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerMaxTradeAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "offerFiatCurrency",
+              type: "string",
+            },
+            {
+              internalType: "enum Offer.OfferStatus",
+              name: "offerStatus",
+              type: "uint8",
+            },
+            {
+              internalType: "uint256",
+              name: "offerCreatedTime",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerLastUpdatedTime",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "offerBuyingCrypto",
+              type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "offerCountry",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "offerPaymentMethod",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "offerTerms",
+              type: "string",
+            },
+            {
+              internalType: "int256",
+              name: "offerRate",
+              type: "int256",
+            },
+            {
+              internalType: "string",
+              name: "offerTitle",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "pauseContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "paused",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "registry",
+          outputs: [
+            {
+              internalType: "contract ContractRegistry",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "unpauseContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_offerId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_tradeVolume",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "_accepted",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "_completed",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "_disputed",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "_lost",
+              type: "bool",
+            },
+            {
+              internalType: "uint256",
+              name: "_disputeId",
+              type: "uint256",
+            },
+          ],
+          name: "updateOfferStats",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "userOffers",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Rating: {
+      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_registryAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "raterId",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "rateeId",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "rateStars",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "rateString",
+              type: "string",
+            },
+          ],
+          name: "TradeRated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "newReputation",
+              type: "uint256",
+            },
+          ],
+          name: "UserReputationUpdated",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rateStars",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_rateString",
+              type: "string",
+            },
+          ],
+          name: "rateTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "ratingCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "ratings",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "raterId",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "rateeId",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "rateStars",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "rateString",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "rateTimestamp",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "registry",
+          outputs: [
+            {
+              internalType: "contract ContractRegistry",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "tradeRatings",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Reputation: {
+      address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_registryAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "calculateReputation",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "registry",
+          outputs: [
+            {
+              internalType: "contract ContractRegistry",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Trade: {
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_registryAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "InvalidInitialization",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NotInitializing",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ReentrancyGuardReentrantCall",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "admin",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "isAdmin",
+              type: "bool",
+            },
+          ],
+          name: "AdminSet",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "CryptoLockedInEscrow",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "FiatMarkedAsPaid",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "version",
+              type: "uint64",
+            },
+          ],
+          name: "Initialized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "TradeAccepted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "reason",
+              type: "string",
+            },
+          ],
+          name: "TradeCancelled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "TradeDisputed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          name: "TradeFinalized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "taker",
+              type: "address",
+            },
+          ],
+          name: "TradeInitiated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "rating",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "feedback",
+              type: "string",
+            },
+          ],
+          name: "TradeRated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256[]",
+              name: "tradeIds",
+              type: "uint256[]",
+            },
+          ],
+          name: "TradeSequenceCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "TradeTimedOut",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "acceptTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "admins",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "cancelTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "disputeTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "finalizeTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "getNextTradeInSequence",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "getPreviousTradeInSequence",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getTradeCounts",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "getTradeDetails",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "enum Trade.TradeStatus",
+              name: "",
+              type: "uint8",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "getTradeMaker",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256[]",
+              name: "_offerIds",
+              type: "uint256[]",
+            },
+            {
+              internalType: "uint256",
+              name: "_tradeAmountFiat",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_tradeAmountCrypto",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_tradeFiatCurrency",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_tradeCryptoCurrency",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_blocksTillTimeout",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_tradeCancelationReason",
+              type: "string",
+            },
+          ],
+          name: "initiateTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "lockCryptoInEscrow",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rating",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_feedback",
+              type: "string",
+            },
+          ],
+          name: "rateTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "refundTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "registry",
+          outputs: [
+            {
+              internalType: "contract ContractRegistry",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_admin",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "_isAdmin",
+              type: "bool",
+            },
+          ],
+          name: "setAdmin",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address[]",
+              name: "_admins",
+              type: "address[]",
+            },
+          ],
+          name: "setInitialAdmins",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "timeoutTrade",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "tradeCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+          ],
+          name: "tradeMarkFiatPaid",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "tradeRatings",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "tradeSequence",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "trades",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "offerId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "taker",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tradeAmountFiat",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "tradeAmountCrypto",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "tradeFiatCurrency",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "tradeCryptoCurrency",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "blocksTillTimeout",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "tradeCancelationReason",
+              type: "string",
+            },
+            {
+              internalType: "enum Trade.TradeStatus",
+              name: "tradeStatus",
+              type: "uint8",
+            },
+            {
+              internalType: "uint256",
+              name: "tradeInitiatedTime",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "tradeFinalizedTime",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "tradeFee",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tradeId",
+              type: "uint256",
+            },
+            {
+              internalType: "enum Trade.TradeStatus",
+              name: "_newStatus",
+              type: "uint8",
+            },
+          ],
+          name: "updateTradeStatusFromArbitration",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "enum Trade.TradeStatus",
+              name: "",
+              type: "uint8",
+            },
+            {
+              internalType: "enum Trade.TradeStatus",
+              name: "",
+              type: "uint8",
+            },
+          ],
+          name: "validTransitions",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+  },
+} as const;
 
 export default deployedContracts satisfies GenericContractsDeclaration;
